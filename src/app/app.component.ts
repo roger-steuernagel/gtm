@@ -7,6 +7,7 @@ import {
   PoListViewModule,
   PoNotificationService,
   PoTagModule,
+  PoTagType,
   PoWidgetModule
 } from '@po-ui/ng-components';
 
@@ -51,8 +52,8 @@ export class AppComponent {
     return this.tasks.length - this.completedCount;
   }
 
-  get progressStatus(): 'success' | 'warning' {
-    return this.pendingCount === 0 ? 'success' : 'warning';
+  get progressStatus(): PoTagType.Success | PoTagType.Warning {
+    return this.pendingCount === 0 ? PoTagType.Success : PoTagType.Warning;
   }
 
   toggleTask(id: number): void {

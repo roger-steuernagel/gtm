@@ -6,7 +6,7 @@
         [p-type]="progressStatus"
         [p-value]="completedCount + ' concluídas'"
       />
-      <po-tag p-size="large" p-type="warning" [p-value]="pendingCount + ' pendentes'" />
+      <po-tag p-size="large" [p-value]="pendingCount + ' pendentes'" />
     </div>
 
     <div class="actions">
@@ -22,7 +22,6 @@
     <po-list-view
       [p-items]="tasks"
       [p-property-title]="'title'"
-      [p-property-subtitle]="'completed'"
     >
       <ng-template p-list-view-content-template let-item>
         <div class="task-row">
