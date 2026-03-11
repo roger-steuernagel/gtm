@@ -1,17 +1,32 @@
-# Angular + PO UI Frontend
+# Angular + PO UI Frontend + Spring Boot API
 
-This repository now uses **PO UI** as the frontend component framework on top of Angular.
+This repository contains:
 
-## What changed
+- Angular frontend using **PO UI** components.
+- A Spring Boot backend (`spring-api`) that replaces the old PHP hello endpoint.
 
-- Added PO UI dependencies and theme/icon styles.
-- Refactored `AppComponent` to use PO UI building blocks (`po-widget`, `po-button`, `po-tag`, `po-list-view`, `po-divider`).
-- Replaced browser `alert` notifications with `PoNotificationService`.
-- Enabled Angular animations provider required by PO UI.
-
-## Run
+## Frontend (Angular)
 
 ```bash
 npm install
 npm start
+```
+
+## Backend (Spring Boot)
+
+```bash
+cd spring-api
+mvn spring-boot:run
+```
+
+The API endpoint is available at:
+
+- `GET http://localhost:8080/api/hello`
+
+Response:
+
+```json
+{
+  "message": "HELLO WORLD"
+}
 ```
