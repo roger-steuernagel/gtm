@@ -1,0 +1,19 @@
+main {
+  font-family: Arial, sans-serif;
+  margin: 2rem auto;
+  max-width: 32rem;
+  line-height: 1.5;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li + li {
+  margin-top: 0.5rem;
+}
