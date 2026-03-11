@@ -1,12 +1,13 @@
-# Angular TypeScript Migration
+# Angular + PO UI Frontend
 
-This repository now uses TypeScript while keeping Angular as the framework.
+This repository now uses **PO UI** as the frontend component framework on top of Angular.
 
 ## What changed
 
-- Replaced JavaScript entrypoint patterns with `src/main.ts`.
-- Added a typed Angular component (`AppComponent`) with a strict `Task` interface.
-- Enabled strict TypeScript compiler settings in `tsconfig.json`.
+- Added PO UI dependencies and theme/icon styles.
+- Refactored `AppComponent` to use PO UI building blocks (`po-widget`, `po-button`, `po-tag`, `po-list-view`, `po-divider`).
+- Replaced browser `alert` notifications with `PoNotificationService`.
+- Enabled Angular animations provider required by PO UI.
 
 ## Run
 

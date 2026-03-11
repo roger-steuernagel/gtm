@@ -1,6 +1,9 @@
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { AppComponent } from './app/app.component';
 
-bootstrapApplication(AppComponent).catch((err: unknown) => {
+bootstrapApplication(AppComponent, {
+  providers: [provideAnimations()]
+}).catch((err: unknown) => {
   console.error('Bootstrap failed', err);
 });

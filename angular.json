@@ -21,6 +21,8 @@
             "tsConfig": "tsconfig.json",
             "assets": [],
             "styles": [
+              "node_modules/@po-ui/style/css/po-theme-default.min.css",
+              "node_modules/@po-ui/style/css/po-icons.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -71,6 +73,8 @@
             "tsConfig": "tsconfig.json",
             "assets": [],
             "styles": [
+              "node_modules/@po-ui/style/css/po-theme-default.min.css",
+              "node_modules/@po-ui/style/css/po-icons.min.css",
               "src/styles.css"
             ],
             "scripts": []

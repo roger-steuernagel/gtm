@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  PoButtonModule,
+  PoContainerModule,
+  PoDividerModule,
+  PoListViewModule,
+  PoNotificationService,
+  PoTagModule,
+  PoWidgetModule
+} from '@po-ui/ng-components';
 
 interface Task {
   id: number;
@@ -10,12 +19,20 @@ interface Task {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    PoButtonModule,
+    PoContainerModule,
+    PoDividerModule,
+    PoListViewModule,
+    PoTagModule,
+    PoWidgetModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Angular + TypeScript migration complete';
+  title = 'Dashboard de tarefas com PO UI';
   private readonly helloApiUrl = 'http://localhost:8000/api/hello.php';
 
   tasks: Task[] = [
@@ -24,8 +41,18 @@ export class AppComponent {
     { id: 3, title: 'Keep Angular component architecture', completed: true }
   ];
 
+  constructor(private readonly notification: PoNotificationService) {}
+
   get completedCount(): number {
     return this.tasks.filter((task: Task) => task.completed).length;
+  }
+
+  get pendingCount(): number {
+    return this.tasks.length - this.completedCount;
+  }
+
+  get progressStatus(): 'success' | 'warning' {
+    return this.pendingCount === 0 ? 'success' : 'warning';
   }
 
   toggleTask(id: number): void {
@@ -49,10 +76,13 @@ export class AppComponent {
       const data: { message: string } = (await response.json()) as {
         message: string;
       };
-      alert(data.message);
+
+      this.notification.success(data.message);
     } catch (error: unknown) {
       console.error('Failed to call PHP API', error);
-      alert('Unable to reach the PHP API. Start it with: php -S localhost:8000');
+      this.notification.error(
+        'Unable to reach the PHP API. Start it with: php -S localhost:8000'
+      );
     }
   }
 }

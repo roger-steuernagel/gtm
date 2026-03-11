@@ -1,20 +1,39 @@
-<main>
-  <h1>{{ title }}</h1>
+<main class="app-shell po-font-text">
+  <po-widget [p-title]="title">
+    <div class="summary">
+      <po-tag
+        p-size="large"
+        [p-type]="progressStatus"
+        [p-value]="completedCount + ' concluídas'"
+      />
+      <po-tag p-size="large" p-type="warning" [p-value]="pendingCount + ' pendentes'" />
+    </div>
 
-  <p>{{ completedCount }} / {{ tasks.length }} tasks completed</p>
+    <div class="actions">
+      <po-button
+        p-label="Chamar API PHP"
+        p-kind="primary"
+        (p-click)="showHelloWorld()"
+      />
+    </div>
 
-  <button type="button" (click)="showHelloWorld()">Call PHP Hello API</button>
+    <po-divider p-label="Tarefas" />
 
-  <ul>
-    <li *ngFor="let task of tasks">
-      <label>
-        <input
-          type="checkbox"
-          [checked]="task.completed"
-          (change)="toggleTask(task.id)"
-        />
-        {{ task.title }}
-      </label>
-    </li>
-  </ul>
+    <po-list-view
+      [p-items]="tasks"
+      [p-property-title]="'title'"
+      [p-property-subtitle]="'completed'"
+    >
+      <ng-template p-list-view-content-template let-item>
+        <div class="task-row">
+          <input
+            type="checkbox"
+            [checked]="item.completed"
+            (change)="toggleTask(item.id)"
+          />
+          <span [class.done]="item.completed">{{ item.title }}</span>
+        </div>
+      </ng-template>
+    </po-list-view>
+  </po-widget>
 </main>
