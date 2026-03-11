@@ -3,6 +3,8 @@
 
   <p>{{ completedCount }} / {{ tasks.length }} tasks completed</p>
 
+  <button type="button" (click)="showHelloWorld()">Call PHP Hello API</button>
+
   <ul>
     <li *ngFor="let task of tasks">
       <label>
