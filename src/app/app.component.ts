@@ -16,6 +16,7 @@ interface Task {
 })
 export class AppComponent {
   title = 'Angular + TypeScript migration complete';
+  private readonly helloApiUrl = 'http://localhost:8000/api/hello.php';
 
   tasks: Task[] = [
     { id: 1, title: 'Replace .js files with .ts', completed: true },
@@ -35,5 +36,23 @@ export class AppComponent {
 
       return task;
     });
+  }
+
+  async showHelloWorld(): Promise<void> {
+    try {
+      const response: Response = await fetch(this.helloApiUrl);
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
+      const data: { message: string } = (await response.json()) as {
+        message: string;
+      };
+      alert(data.message);
+    } catch (error: unknown) {
+      console.error('Failed to call PHP API', error);
+      alert('Unable to reach the PHP API. Start it with: php -S localhost:8000');
+    }
   }
 }
